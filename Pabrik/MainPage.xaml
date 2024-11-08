@@ -1,0 +1,67 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Pabrik.MainPage">
+
+    <Grid Padding="10">
+        <!-- Header -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="StartAndExpand">
+            <!-- analogikan sebagai fungsiKerja -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Klasifikasi" Text="Kualitas"  HeightRequest="40" Margin="5" Clicked="Button1_Clicked" Background="Red" HorizontalOptions="FillAndExpand" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Detector" Text="Detector"  HeightRequest="40" Margin="5" Clicked="Button2_Clicked" Background="Green"  HorizontalOptions="FillAndExpand" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Filter" Text="Label"  HeightRequest="40" Margin="5" Clicked="Button3_Clicked" Background="Yellow"  HorizontalOptions="FillAndExpand" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Check" Text="Fungsi" HeightRequest="40" Margin="5" Clicked="Button4_Clicked" Background="Blue" HorizontalOptions="FillAndExpand" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Hitung" Text="Safety" HeightRequest="40" Margin="5" Clicked="Button5_Clicked" Background="Purple" HorizontalOptions="FillAndExpand" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Result" Text="Result"  HeightRequest="40" Margin="5" Background="Black" HorizontalOptions="FillAndExpand" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Probability" Text="Probability"  HeightRequest="40" Margin="5" Background="Black" HorizontalOptions="FillAndExpand" TextColor="White"/>
+            </StackLayout>
+            <!-- analogikan sebagai mesin -->
+            <BoxView Color="Red" WidthRequest="50" HeightRequest="50" CornerRadius="30" Margin="5" x:Name="indikator1"/>
+            <BoxView Color="Green" WidthRequest="50" HeightRequest="50" CornerRadius="30" Margin="5" x:Name="indikator2"/>
+            <BoxView Color="Yellow" WidthRequest="50" HeightRequest="50" CornerRadius="30" Margin="5" x:Name="indikator3"/>
+            <BoxView Color="Blue" WidthRequest="50" HeightRequest="50" CornerRadius="30" Margin="5" x:Name="indikator4"/>
+            <BoxView Color="Purple" WidthRequest="50" HeightRequest="50" CornerRadius="30" Margin="5" x:Name="indikator5"/>
+            <Image x:Name="Merk" WidthRequest="50" HeightRequest="50" Source="logo.png"/>
+        </StackLayout>
+        <!-- Inspection Result Panel -->
+        <Grid Grid.Row="1" ColumnDefinitions="*, Auto" RowDefinitions="Auto, *">
+            <toolkit:CameraView x:Name="cameraView"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Grid.ColumnSpan="3" 
+                               Grid.Row="0" >
+            </toolkit:CameraView>
+        </Grid>
+        <StackLayout Grid.Row="3" Orientation="Vertical" Spacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <StackLayout Orientation="Horizontal" Margin="5,5,5,5" HorizontalOptions="FillAndExpand">
+                <Button x:Name="StartButton" Text="Start Inspection" Margin="5"
+                FontSize="16" BackgroundColor="#4CAF50" TextColor="White" 
+                HorizontalOptions="FillAndExpand" Clicked="OnStartCameraClicked"/>
+                <Button x:Name="StopButton" Text="Stop Inspection" Margin="5"
+                FontSize="16" BackgroundColor="#F44336" TextColor="White" 
+                HorizontalOptions="FillAndExpand" Clicked="OnStopCameraClicked"/>
+                <Slider x:Name="TimerSlider" Minimum="1" Maximum="10" Value="5" Margin="5"
+            VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="TimerValueLabel" Text="" FontSize="14" HorizontalOptions="Center" Margin="5"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>
